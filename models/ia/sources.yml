@@ -1,0 +1,57 @@
+version: 2
+
+sources:
+  - name: internal_app  
+    description: "Raw data from Internal App Database"
+    database: InternalApp
+    schema: dbo
+    tables:
+      - name: candidates    
+        description: "This table contains information about candidates, including personal details and office assignment."
+
+        columns:
+          - name: Id
+            description: "Primary key for the candidates table"
+            tests:
+              - unique
+              - not_null
+          - name: Name
+            description: "The full name of the candidate"
+            tests:
+              - not_null
+          - name: Email
+            description: "The email address of the candidate"
+            tests:
+              - not_null
+              - unique
+          - name: PhoneNumber
+            description: "The phone number of the candidate"
+          - name: OfficeId
+            description: "Foreign key referencing the office where the candidate is assigned"
+
+      - name: offices
+        description: "This table contains information about office locations."
+        columns:
+          - name: Id
+            description: "Primary key for the offices table"
+            tests:
+              - unique
+              - not_null
+          - name: Address
+            description: "The address of the office."
+    
+      - name: skills
+        description: "This table contains information about candidate skills."
+        columns:
+          - name: Id
+            description: "Primary key for the skills table"
+            tests:
+              - unique
+              - not_null
+          - name: Name
+            description: "The skill name."
+          - name: CandidateId
+            description: "Foreign key refferencing what candidate has this skill"
+            tests:
+              - unique
+              - not_null

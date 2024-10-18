@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: human
+    description: "A table that represents basic human information"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: "The first name of the person"
+      - name: last_name
+        description: "The last name of the person"
+      - name: birth_date
+        description: "The birth date of the person"
+      - name: email
+        description: "The email address of the person"
+        tests:
+          - not_null
+
+  - name: address_info
+    description: "A table that stores address information with a foreign key to human_info"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: human_id
+        description: "Foreign key reference to the human_info table"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('human')   
+              field: id
+      - name: street
+        description: "The street address of the person"
+      - name: city
+        description: "The city where the person lives"
+      - name: state
+        description: "The state where the person lives"
+      - name: zip_code
+        description: "The postal code of the person's address"
