@@ -1,0 +1,10 @@
+Value,Status
+0,Unknown
+10,Applied
+20,Interviewing
+30,Accepted
+40,Rejected
+50,ToBeScheduled
+60,FeedbackDone
+70,Confirmed
+80,Ghosted
