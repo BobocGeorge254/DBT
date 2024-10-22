@@ -41,6 +41,6 @@ candidate_status AS (
 SELECT
     CandidateId,
     ToStatus,
-    DATEDIFF(HOUR, CandidateCreatedAt, StatusChangeTimestamp) AS TimeDifferenceInHours
+    {{ calculate_time_difference('CandidateCreatedAt', 'StatusChangeTimestamp', 'HOUR') }} AS TimeDifferenceInHours
 FROM candidate_status
 WHERE rn = 1;

@@ -36,8 +36,7 @@ candidates_with_info AS (
         c.CandidateId,
         COALESCE(o.OfficeAddress, 'UNK') as OfficeAddress,
         COUNT(ac.AssigneeCardId) AS NumberOfAssignees,
-        cs.CandidateStatus,
-        cs.TimeDifferenceInHours
+        {{ apply_default_status_time('cs.CandidateStatus', 'cs.TimeDifferenceInHours') }}
     FROM candidates AS c
     LEFT JOIN offices AS o ON c.OfficeId = o.OfficeId
     LEFT JOIN cards AS ca ON ca.CandidateId = c.CandidateId
