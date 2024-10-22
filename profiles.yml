@@ -10,3 +10,4 @@ ia:
       schema: dbt_bobocg
       windows_login: True
       trust_cert: True
+      
